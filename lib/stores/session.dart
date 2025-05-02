@@ -20,7 +20,7 @@ class Session extends _Session with _$Session {
     Game game,
     Peaks layout, {
     bool startEmpty = false,
-    bool alwaysSolvable = false,
+    bool alwaysSolvable = true,
     bool showAll = false,
     required PlayerStatistics statistics,
   }) : super(game, layout, startEmpty: startEmpty, alwaysSolvable: alwaysSolvable, showAll: showAll, statistics: statistics);
@@ -28,7 +28,7 @@ class Session extends _Session with _$Session {
   factory Session.fresh() {
     final layout = Peaks.threePeaks;
     final startEmpty = false;
-    final alwaysSolvable = false;
+    final alwaysSolvable = true;
     final game = _Session._makeRandomGame(layout, startEmpty, alwaysSolvable);
     return Session(game, layout, startEmpty: startEmpty, alwaysSolvable: alwaysSolvable, statistics: PlayerStatistics.empty());
   }
@@ -65,7 +65,7 @@ abstract class _Session with Store {
     this.layout, {
     required PlayerStatistics statistics,
     this.startEmpty = false,
-    this.alwaysSolvable = false,
+    this.alwaysSolvable = true,
     this.showAll = true,
   }) : _statistics = statistics,
        _game = game {
@@ -191,7 +191,7 @@ final class _SessionData {
   final bool alwaysSolvable;
   final bool showAll;
 
-  _SessionData.fresh() : this(layout: Peaks.threePeaks, startEmpty: false, alwaysSolvable: false, showAll: true);
+  _SessionData.fresh() : this(layout: Peaks.threePeaks, startEmpty: false, alwaysSolvable: true, showAll: true);
 
   _SessionData.fromJsonObject(Map<String, dynamic> jsonObject)
     : layout = Peaks.values[jsonObject["layout"]],

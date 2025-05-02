@@ -32,7 +32,7 @@ class Game extends _Game with _$Game {
     required super.statisticsPushed,
   });
 
-  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false, bool alwaysSolvable = false}) {
+  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false, bool alwaysSolvable = true}) {
     assert(deck.length == 52);
     final lo = layout ?? threePeaksLayout;
     if (alwaysSolvable) {
@@ -119,9 +119,6 @@ class Game extends _Game with _$Game {
       stockIdxs = stockIdxs..shuffle();
       for (var i = 0; i < stockDeck.length; i++) {
         randomStockIdxs.add(stockIdxs[i]);
-      }
-      for (var element in stockDeck) {
-        print(element.suit.toString() + element.rank.toString());
       }
       for (var i = 0; i < maxStockMoves; i++) {
         if (randomStockIdxs.contains(i)) {

@@ -17,7 +17,7 @@ class SelectLayoutDialog extends StatefulWidget {
 class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
   bool? _showAll = false;
   bool? _startEmpty = false;
-  bool? _alwaysSolvable = false;
+  bool? _alwaysSolvable = true;
   Peaks? _layout = Peaks.threePeaks;
 
   @override
