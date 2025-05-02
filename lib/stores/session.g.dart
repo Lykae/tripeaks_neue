@@ -136,6 +136,7 @@ mixin _$Session on _Session, Store {
     return '''
 layout: ${layout},
 startEmpty: ${startEmpty},
+alwaysSolvable: ${alwaysSolvable},
 showAll: ${showAll}
     ''';
   }
