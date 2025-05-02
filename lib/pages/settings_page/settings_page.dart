@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/settings_page/always_solvable_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
@@ -44,6 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
         SetThemeModeIntent: SetThemeModeAction(),
         SetShowAllIntent: SetShowAllAction(),
         SetStartEmptyIntent: SetStartEmptyAction(),
+        SetAlwaysSolvableIntent: SetAlwaysSolvableAction(),
         SetDecorIntent: SetDecorAction(),
         SetDecorColourIntent: SetDecorColourAction(),
         SetLayoutIntent: SetLayoutAction(),
@@ -110,6 +112,7 @@ final class SettingsPageBody extends StatelessWidget {
                           GroupTitle(s.nextGameSettingGroupTitle),
                           const LayoutSetting(),
                           const StartEmptySetting(),
+                          const AlwaysSolvableSetting(),
                           GroupTitle(s.interfaceSettingGroupTitle),
                           const SoundSetting(),
                           const ThemeModeSetting(),

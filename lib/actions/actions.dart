@@ -236,6 +236,17 @@ final class SetStartEmptyAction extends ContextAction<SetStartEmptyIntent> {
   }
 }
 
+final class SetAlwaysSolvableAction extends ContextAction<SetAlwaysSolvableIntent> {
+  @override
+  void invoke(SetAlwaysSolvableIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final session = Provider.of<Session>(context, listen: false);
+    session.alwaysSolvable = intent.value;
+  }
+}
+
 final class SetDecorAction extends ContextAction<SetDecorIntent> {
   @override
   void invoke(SetDecorIntent intent, [BuildContext? context]) {

@@ -92,6 +92,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startEmptyOnLabel => 'Start empty';
 
   @override
+  String get alwaysSolvableControl => 'Generate game using algorithm (100% solvable)';
+
+  @override
+  String get alwaysSolvableOffLabel => 'Use Shuffling';
+
+  @override
+  String get alwaysSolvableOnLabel => 'Use Algorithm';
+
+  @override
   String get themeModeControl => 'Theme mode';
 
   @override
@@ -183,6 +192,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get startsEmptyOptionLabel => 'Start with an empty discard pile';
+
+  @override
+  String get alwaysSolvableOptionLabel => 'Generate using algorithm (100% solvable)';
 
   @override
   String get showAllOptionLabel => 'Show values of closed cards';

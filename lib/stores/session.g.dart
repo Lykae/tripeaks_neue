@@ -44,6 +44,9 @@ mixin _$Session on _Session, Store {
   late final _$startEmptyAtom =
       Atom(name: '_Session.startEmpty', context: context);
 
+  late final _$alwaysSolvableAtom =
+      Atom(name: '_Session.alwaysSolvable', context: context);
+
   @override
   bool get startEmpty {
     _$startEmptyAtom.reportRead();
@@ -54,6 +57,19 @@ mixin _$Session on _Session, Store {
   set startEmpty(bool value) {
     _$startEmptyAtom.reportWrite(value, super.startEmpty, () {
       super.startEmpty = value;
+    });
+  }
+
+  @override
+  bool get alwaysSolvable {
+    _$alwaysSolvableAtom.reportRead();
+    return super.alwaysSolvable;
+  }
+
+  @override
+  set alwaysSolvable(bool value) {
+    _$alwaysSolvableAtom.reportWrite(value, super.alwaysSolvable, () {
+      super.alwaysSolvable = value;
     });
   }
 

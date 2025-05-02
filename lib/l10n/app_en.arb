@@ -175,6 +175,25 @@
         "context": "settings",
         "description": "Value label of startEmpty control when it is on."
     },
+    "@_SETTINGS_PAGE__ALWAYS_SOLVABLE_SETTING": {},
+    "alwaysSolvableControl": "Generate game using algorithm (100% solvable)",
+    "@alwaysSolvableControl": {
+        "type": "text",
+        "context": "settings:alwaysSolvableSetting",
+        "description": "Label of a control that sets if the always solvable generation algorithm should be used."
+    },
+    "alwaysSolvableOffLabel": "Use Shuffling",
+    "@alwaysSolvableOffLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of alwaysSolvable control when it is off."
+    },
+    "alwaysSolvableOnLabel": "Use Algorithm",
+    "@alwaysSolvableOnLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of alwaysSolvable control when it is on."
+    },
     "@_SETTINGS_PAGE__THEME_MODE_SETTING": {},
     "themeModeControl": "Theme mode",
     "@themeModeControl": {
@@ -365,6 +384,12 @@
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Label of the checkbox that sets if the discard pile should be empty at the beginning of the game."
+    },
+    "alwaysSolvableOptionLabel": "Generate using algorithm (100% solvable)",
+    "@alwaysSolvableOptionLabel": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Label of the checkbox that sets if the always solvable generation algorithm should be used when creating a game."
     },
     "showAllOptionLabel": "Show values of closed cards",
     "@showAllOptionLabel": {

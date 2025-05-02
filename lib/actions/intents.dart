@@ -75,6 +75,12 @@ final class SetStartEmptyIntent extends Intent {
   final bool value;
 }
 
+final class SetAlwaysSolvableIntent extends Intent {
+  const SetAlwaysSolvableIntent(this.value);
+
+  final bool value;
+}
+
 final class SetSoundModeIntent extends Intent {
   const SetSoundModeIntent(this.value);
 

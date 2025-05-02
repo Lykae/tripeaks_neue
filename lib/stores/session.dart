@@ -20,15 +20,17 @@ class Session extends _Session with _$Session {
     Game game,
     Peaks layout, {
     bool startEmpty = false,
+    bool alwaysSolvable = false,
     bool showAll = false,
     required PlayerStatistics statistics,
-  }) : super(game, layout, startEmpty: startEmpty, showAll: showAll, statistics: statistics);
+  }) : super(game, layout, startEmpty: startEmpty, alwaysSolvable: alwaysSolvable, showAll: showAll, statistics: statistics);
 
   factory Session.fresh() {
     final layout = Peaks.threePeaks;
     final startEmpty = false;
-    final game = _Session._makeRandomGame(layout, startEmpty);
-    return Session(game, layout, startEmpty: startEmpty, statistics: PlayerStatistics.empty());
+    final alwaysSolvable = false;
+    final game = _Session._makeRandomGame(layout, startEmpty, alwaysSolvable);
+    return Session(game, layout, startEmpty: startEmpty, alwaysSolvable: alwaysSolvable, statistics: PlayerStatistics.empty());
   }
 
   static Future<Session> read() async {
@@ -36,13 +38,14 @@ class Session extends _Session with _$Session {
     final sessionData = await io.read("session", _SessionData.fromJsonObject) ?? _SessionData.fresh();
     final game =
         await io.read("game", Game.fromJsonObject) ??
-        _Session._makeRandomGame(sessionData.layout, sessionData.startEmpty);
+        _Session._makeRandomGame(sessionData.layout, sessionData.startEmpty, sessionData.alwaysSolvable);
     final statistics =
         await io.read("statistics", PlayerStatistics.fromJsonObject) ?? PlayerStatistics.empty();
     return Session(
       game,
       sessionData.layout,
       startEmpty: sessionData.startEmpty,
+      alwaysSolvable: sessionData.alwaysSolvable,
       showAll: sessionData.showAll,
       statistics: statistics,
     );
@@ -62,7 +65,8 @@ abstract class _Session with Store {
     this.layout, {
     required PlayerStatistics statistics,
     this.startEmpty = false,
-    this.showAll = false,
+    this.alwaysSolvable = false,
+    this.showAll = true,
   }) : _statistics = statistics,
        _game = game {
     whenCleared = when((_) => _game.isCleared, () {
@@ -76,13 +80,16 @@ abstract class _Session with Store {
   @readonly
   Game _game;
 
-  @observable
+  @readonly
   Peaks layout;
 
-  @observable
+  @readonly
   bool startEmpty;
 
-  @observable
+  @readonly
+  bool alwaysSolvable;
+
+  @readonly
   bool showAll;
 
   @readonly
@@ -92,7 +99,7 @@ abstract class _Session with Store {
 
   @action
   void newGame(Future<void> Function() callback) {
-    final next = _makeRandomGame(layout, startEmpty);
+    final next = _makeRandomGame(layout, startEmpty, alwaysSolvable);
     for (final tile in next.board) {
       tile.hide();
     }
@@ -147,12 +154,12 @@ abstract class _Session with Store {
     return;
   }
 
-  static Game _makeRandomGame(Peaks layout, bool startEmpty) {
+  static Game _makeRandomGame(Peaks layout, bool startEmpty, bool alwaysSolvable) {
     final layoutObj = layout.implementation;
 
     Game make() {
       final deck = getDeck()..shuffle();
-      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: startEmpty);
+      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: startEmpty, alwaysSolvable: alwaysSolvable);
     }
 
     for (var i = 0; i < 10; i++) {
@@ -177,25 +184,28 @@ abstract class _Session with Store {
 }
 
 final class _SessionData {
-  _SessionData({required this.layout, required this.startEmpty, required this.showAll});
+  _SessionData({required this.layout, required this.startEmpty, required this.alwaysSolvable, required this.showAll});
 
   final Peaks layout;
   final bool startEmpty;
+  final bool alwaysSolvable;
   final bool showAll;
 
-  _SessionData.fresh() : this(layout: Peaks.threePeaks, startEmpty: false, showAll: false);
+  _SessionData.fresh() : this(layout: Peaks.threePeaks, startEmpty: false, alwaysSolvable: false, showAll: true);
 
   _SessionData.fromJsonObject(Map<String, dynamic> jsonObject)
     : layout = Peaks.values[jsonObject["layout"]],
       startEmpty = jsonObject["startEmpty"],
+      alwaysSolvable = jsonObject["alwaysSolvable"],
       showAll = jsonObject["showAll"];
 
   _SessionData.of(Session session)
-    : this(layout: session.layout, startEmpty: session.startEmpty, showAll: session.showAll);
+    : this(layout: session.layout, startEmpty: session.startEmpty, alwaysSolvable: session.alwaysSolvable, showAll: session.showAll);
 
   Map<String, dynamic> toJsonObject() => <String, dynamic>{
-    "layout": layout.index,
-    "startEmpty": startEmpty,
-    "showAll": showAll,
+    //"layout": layout.index,
+    //"startEmpty": startEmpty,
+    //"alwaysSolvable": alwaysSolvable,
+    //"showAll": showAll,
   };
 }

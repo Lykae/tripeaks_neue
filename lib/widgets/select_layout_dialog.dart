@@ -17,6 +17,7 @@ class SelectLayoutDialog extends StatefulWidget {
 class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
   bool? _showAll = false;
   bool? _startEmpty = false;
+  bool? _alwaysSolvable = false;
   Peaks? _layout = Peaks.threePeaks;
 
   @override
@@ -24,6 +25,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     super.initState();
     _showAll = null;
     _startEmpty = null;
+    _alwaysSolvable = null;
     _layout = null;
   }
 
@@ -32,6 +34,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     super.activate();
     _showAll = null;
     _startEmpty = null;
+    _alwaysSolvable = null;
     _layout = null;
   }
 
@@ -43,6 +46,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
 
     _showAll ??= session.showAll;
     _startEmpty ??= session.startEmpty;
+    _alwaysSolvable ??= session.alwaysSolvable;
     _layout ??= session.layout;
 
     return TranslucentDialog(
@@ -86,6 +90,16 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             onTap: () => setState(() => _startEmpty = !_startEmpty!),
             padding: _choicePadding,
           ),
+          MyListTile(
+            leading: Checkbox(
+              value: _alwaysSolvable,
+              visualDensity: VisualDensity.compact,
+              onChanged: (value) => setState(() => _alwaysSolvable = value!),
+            ),
+            title: Text(s.alwaysSolvableOptionLabel),
+            onTap: () => setState(() => _alwaysSolvable = !_alwaysSolvable!),
+            padding: _choicePadding,
+          ),
         ],
       ),
       actions: <Widget>[
@@ -98,6 +112,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           onPressed: () {
             session.showAll = _showAll!;
             session.startEmpty = _startEmpty!;
+            session.alwaysSolvable = _alwaysSolvable!;
             session.layout = _layout!;
             session.newGame(settings.sounds.playStart);
             Navigator.pop(context);

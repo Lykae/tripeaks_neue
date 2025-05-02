@@ -255,6 +255,24 @@ abstract class AppLocalizations {
   /// **'Start empty'**
   String get startEmptyOnLabel;
 
+  /// Label of a control that sets if the always solvable generation algorithm should be used.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate game using algorithm (100% solvable)'**
+  String get alwaysSolvableControl;
+
+  /// Value label of alwaysSolvable control when it is off.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Shuffling'**
+  String get alwaysSolvableOffLabel;
+
+  /// Value label of alwaysSolvable control when it is on.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Algorithm'**
+  String get alwaysSolvableOnLabel;
+
   /// Label of a control that sets application theme mode.
   ///
   /// In en, this message translates to:
@@ -440,6 +458,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start with an empty discard pile'**
   String get startsEmptyOptionLabel;
+
+  /// Label of the checkbox that sets if the always solvable generation algorithm should be used when creating a game.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate using algorithm (100% solvable)'**
+  String get alwaysSolvableOptionLabel;
 
   /// Label of the checkbox that sets if the values of closed cards should be shown.
   ///

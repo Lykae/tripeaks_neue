@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:logger/logger.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
@@ -5,6 +7,7 @@ import 'package:tripeaks_neue/stores/data/pin.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/util/json_object.dart';
+import 'package:tripeaks_neue/widgets/constants.dart';
 
 part "game.g.dart";
 
@@ -18,6 +21,7 @@ class Game extends _Game with _$Game {
     required super.history,
     required super.started,
     required super.startsEmpty,
+    required super.alwaysSolvable,
     required super.isCleared,
     required super.isStalled,
     required super.isEnded,
@@ -28,9 +32,103 @@ class Game extends _Game with _$Game {
     required super.statisticsPushed,
   });
 
-  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false}) {
+  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false, bool alwaysSolvable = false}) {
     assert(deck.length == 52);
     final lo = layout ?? threePeaksLayout;
+    if (alwaysSolvable) {
+      var rng = Random();
+      List<CardValue> stockDeck = [];
+
+      // create moves
+      var stockPadding = 5;
+      var maxStockMoves = deck.length - lo.pins.length;
+      var numStockMoves = stockPadding + rng.nextInt(maxStockMoves - stockPadding*2);
+      var countStockMoves = numStockMoves;
+      var maxMoves = lo.pins.length + numStockMoves;
+      List<CardValue> moves = [deck.removeLast()];
+      for (var i = 1; i < maxMoves; i++) {
+        var lastNode = moves[moves.length - 1];
+        var possibleNextMoves = deck.where((x) => x.rank.checkAdjacent(lastNode.rank)).toList();
+        var nextMove;
+        if (possibleNextMoves.length == 0) {
+          numStockMoves -= maxMoves - i;
+          countStockMoves = numStockMoves;
+          maxMoves = moves.length;
+          break;
+        }
+        else if (possibleNextMoves.length == 1) {
+          nextMove = possibleNextMoves[0];
+        }
+        else {
+          var rIdx = rng.nextInt(possibleNextMoves.length);
+          nextMove = possibleNextMoves[rIdx];
+        }
+        moves.add(nextMove);
+        deck.removeWhere((x) => x.rank == nextMove.rank && x.suit == nextMove.suit);
+      }
+
+      // build pins and stock
+      Map<int, CardValue> pinMap = {};
+      var stockChance = numStockMoves / maxStockMoves;
+      maxMoves = moves.length;
+      for (var i = 0; i < maxMoves; i++) {
+        List<int> possibleTargets = [];
+        if (i != 0 && countStockMoves > 0) {
+          if (rng.nextDouble() <= stockChance || countStockMoves == maxMoves - i) {
+            stockDeck.add(moves.removeLast());
+            countStockMoves--;
+            continue;
+          }
+        }
+        for (var j = 0; j < lo.pins.length; j++) {
+          if (pinMap[j] != null) {
+            continue;
+          }
+          bool unlocked = true;
+          loop: for (var tileAbove in lo.above[j]) {
+            if (pinMap[tileAbove] == null) {
+              unlocked = false;
+              break loop;
+            }
+          }
+
+          if (unlocked) {
+            possibleTargets.add(j);
+          }
+        }
+        var targetIdx = rng.nextInt(possibleTargets.length);
+        var target = possibleTargets[targetIdx];
+        pinMap[target] = moves.removeLast();
+      }
+
+      // construct deck
+      List<CardValue> newDeck = [];
+      var stockIdxs = [];
+      var randomStockIdxs = [];
+      for (var i = 0; i < maxStockMoves; i++) {
+        stockIdxs.add(i);
+      }
+      stockIdxs = stockIdxs..shuffle();
+      for (var i = 0; i < stockDeck.length; i++) {
+        randomStockIdxs.add(stockIdxs[i]);
+      }
+      for (var element in stockDeck) {
+        print(element.suit.toString() + element.rank.toString());
+      }
+      for (var i = 0; i < maxStockMoves; i++) {
+        if (randomStockIdxs.contains(i)) {
+          newDeck.add(stockDeck.removeLast());
+        } else {
+          var temp = deck.removeLast();
+          newDeck.add(temp);
+        }
+      }
+      for (var pin in pinMap.keys.toList().reversed.toList()) {
+        newDeck.add(pinMap[pin]!);
+      }
+      deck = newDeck;
+    }
+    
     final board =
         lo.pins.map((pin) {
           final tile = Tile(pin: pin, card: deck.removeLast());
@@ -51,6 +149,7 @@ class Game extends _Game with _$Game {
       history: ObservableList<Event>(),
       started: DateTime.now(),
       startsEmpty: startsEmpty,
+      alwaysSolvable: alwaysSolvable,
       isCleared: false,
       isStalled: isStalled,
       isEnded: isStalled,
@@ -60,6 +159,7 @@ class Game extends _Game with _$Game {
       isPlayed: false,
       statisticsPushed: false,
     );
+    
   }
 
   JsonObject toJsonObject() {
@@ -74,6 +174,7 @@ class Game extends _Game with _$Game {
       "discard": discardJson,
       "history": historyJson,
       "startsEmpty": startsEmpty,
+      "alwaysSolvable": alwaysSolvable,
       "isCleared": isCleared,
       "isStalled": isStalled,
       "isEnded": isEnded,
@@ -101,6 +202,7 @@ class Game extends _Game with _$Game {
       history: ObservableList.of(history),
       started: started,
       startsEmpty: jsonObject.read<bool>("startsEmpty"),
+      alwaysSolvable: jsonObject.read<bool>("alwaysSolvable"),
       isCleared: jsonObject.read<bool>("isCleared"),
       isStalled: jsonObject.read<bool>("isStalled"),
       isEnded: jsonObject.read<bool>("isEnded"),
@@ -121,6 +223,7 @@ abstract class _Game with Store {
     required this.discard,
     required this.history,
     required this.startsEmpty,
+    required this.alwaysSolvable,
     required this.started,
     required this.isPlayed,
     required this.statisticsPushed,
@@ -148,6 +251,8 @@ abstract class _Game with Store {
   ObservableList<Event> history;
 
   bool startsEmpty;
+
+  bool alwaysSolvable;
 
   bool isPlayed;
 
@@ -318,6 +423,7 @@ abstract class _Game with Store {
       history: ObservableList<Event>(),
       started: DateTime.now(),
       startsEmpty: startsEmpty,
+      alwaysSolvable: alwaysSolvable,
       isCleared: false,
       isStalled: isStalled,
       isEnded: false,

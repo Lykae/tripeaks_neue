@@ -7,8 +7,8 @@ script:
 AppDir:
   path: ./AppDir
   app_info:
-    id: io.github.mimoguz.tripeaksneue
-    name: TriPeaks NEUE
+    id: io.github.lykae.tripeaks100
+    name: TriPeaks 100
     icon: icon.svg
     version: latest
     exec: tripeaks_neue
