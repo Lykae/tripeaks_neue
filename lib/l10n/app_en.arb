@@ -176,7 +176,7 @@
         "description": "Value label of startEmpty control when it is on."
     },
     "@_SETTINGS_PAGE__ALWAYS_SOLVABLE_SETTING": {},
-    "alwaysSolvableControl": "Generate game using algorithm (100% solvable)",
+    "alwaysSolvableControl": "Generate game using algorithm",
     "@alwaysSolvableControl": {
         "type": "text",
         "context": "settings:alwaysSolvableSetting",
@@ -385,7 +385,7 @@
         "context": "selectLayoutDialog",
         "description": "Label of the checkbox that sets if the discard pile should be empty at the beginning of the game."
     },
-    "alwaysSolvableOptionLabel": "Generate using algorithm (100% solvable)",
+    "alwaysSolvableOptionLabel": "Generate using algorithm",
     "@alwaysSolvableOptionLabel": {
         "type": "text",
         "context": "selectLayoutDialog",

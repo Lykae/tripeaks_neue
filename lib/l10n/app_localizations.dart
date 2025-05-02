@@ -258,7 +258,7 @@ abstract class AppLocalizations {
   /// Label of a control that sets if the always solvable generation algorithm should be used.
   ///
   /// In en, this message translates to:
-  /// **'Generate game using algorithm (100% solvable)'**
+  /// **'Generate game using algorithm'**
   String get alwaysSolvableControl;
 
   /// Value label of alwaysSolvable control when it is off.
@@ -462,7 +462,7 @@ abstract class AppLocalizations {
   /// Label of the checkbox that sets if the always solvable generation algorithm should be used when creating a game.
   ///
   /// In en, this message translates to:
-  /// **'Generate using algorithm (100% solvable)'**
+  /// **'Generate using algorithm'**
   String get alwaysSolvableOptionLabel;
 
   /// Label of the checkbox that sets if the values of closed cards should be shown.
