@@ -46,9 +46,17 @@ class Game extends _Game with _$Game {
       var countStockMoves = numStockMoves;
       var maxMoves = lo.pins.length + numStockMoves;
       List<CardValue> moves = [deck.removeLast()];
+      bool initialDirection = rng.nextDouble() <= 0.5;
+      bool direction = initialDirection;
+      double directionChances = 0.9;
       for (var i = 1; i < maxMoves; i++) {
         var lastNode = moves[moves.length - 1];
-        var possibleNextMoves = deck.where((x) => x.rank.checkAdjacent(lastNode.rank)).toList();
+        direction = direction ? (initialDirection ? rng.nextDouble() <= directionChances : rng.nextDouble() >= directionChances) : initialDirection;
+        var possibleNextMoves = deck.where((x) => lastNode.rank.checkAdjacentDirection(x.rank, direction)).toList();
+        if (possibleNextMoves.length == 0) {
+          direction = !direction;
+          possibleNextMoves = deck.where((x) => lastNode.rank.checkAdjacentDirection(x.rank, direction)).toList();
+        }
         var nextMove;
         if (possibleNextMoves.length == 0) {
           numStockMoves -= maxMoves - i;

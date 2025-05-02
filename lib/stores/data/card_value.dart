@@ -22,6 +22,9 @@ enum Rank {
   bool checkAdjacent(Rank other) =>
       (index - other.index).abs() == 1 || this == ace && other == two || this == two && other == ace;
 
+  bool checkAdjacentDirection(Rank other, bool plus) =>
+      plus ? ((index - other.index) == 1 || this == ace && other == two) : ((index - other.index) == -1 || this == two && other == ace);
+
   (Rank previous, Rank next) get neighbours => (
     this == two ? ace : values[index - 1],
     values[(index + 1) % 13],
