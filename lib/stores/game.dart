@@ -44,11 +44,12 @@ class Game extends _Game with _$Game {
       var maxStockMoves = deck.length - lo.pins.length;
       var numStockMoves = stockPadding + rng.nextInt(maxStockMoves - stockPadding*2);
       var countStockMoves = numStockMoves;
+      double directionChances = 0.95;
+      var goUpChance = 0.8;
       var maxMoves = lo.pins.length + numStockMoves;
       List<CardValue> moves = [deck.removeLast()];
       bool initialDirection = rng.nextDouble() <= 0.5;
       bool direction = initialDirection;
-      double directionChances = 0.9;
       for (var i = 1; i < maxMoves; i++) {
         var lastNode = moves[moves.length - 1];
         direction = direction ? (initialDirection ? rng.nextDouble() <= directionChances : rng.nextDouble() >= directionChances) : initialDirection;
@@ -78,6 +79,13 @@ class Game extends _Game with _$Game {
       // build pins and stock
       Map<int, CardValue> pinMap = {};
       var stockChance = numStockMoves / maxStockMoves;
+      var maxMainAxis = 0;
+      lo.pins.forEach((x) {
+        if (x.mainAxis > maxMainAxis) {
+          maxMainAxis = x.mainAxis;
+        }
+      });
+
       maxMoves = moves.length;
       for (var i = 0; i < maxMoves; i++) {
         List<int> possibleTargets = [];
@@ -88,6 +96,8 @@ class Game extends _Game with _$Game {
             continue;
           }
         }
+        var bottomUncompletedMainAxis = 0;
+        Map<int, bool> mainAxisCompletedMap = {};
         for (var j = 0; j < lo.pins.length; j++) {
           if (pinMap[j] != null) {
             continue;
@@ -100,8 +110,30 @@ class Game extends _Game with _$Game {
             }
           }
 
+          mainAxisCompletedMap[lo.pins[j].mainAxis] = false;
+
           if (unlocked) {
+
             possibleTargets.add(j);
+          }
+        }
+
+        for (var i = 0; i <= maxMainAxis; i++) {
+          var row = mainAxisCompletedMap[i];
+          if (row != null) {
+            if (!row) {
+              bottomUncompletedMainAxis = i;
+              break;
+            }
+          }
+        }
+
+        if (i != 0) {
+          if (rng.nextDouble() <= goUpChance) {
+            var goUpTargets = possibleTargets.where((x) => lo.pins[x].mainAxis > bottomUncompletedMainAxis).toList();
+            if (!goUpTargets.isEmpty) {
+              possibleTargets = goUpTargets;
+            }
           }
         }
         var targetIdx = rng.nextInt(possibleTargets.length);
