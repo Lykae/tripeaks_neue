@@ -44,7 +44,7 @@ class Game extends _Game with _$Game {
       var maxStockMoves = deck.length - lo.pins.length;
       var numStockMoves = stockPadding + rng.nextInt(maxStockMoves - stockPadding*2);
       var countStockMoves = numStockMoves;
-      double directionChances = 0.95;
+      double directionChances = 0.99;
       var goUpChance = 0.8;
       var maxMoves = lo.pins.length + numStockMoves;
       List<CardValue> moves = [deck.removeLast()];
@@ -78,7 +78,7 @@ class Game extends _Game with _$Game {
 
       // build pins and stock
       Map<int, CardValue> pinMap = {};
-      var stockChance = numStockMoves / maxStockMoves;
+      //var stockChance = numStockMoves / maxStockMoves;
       var maxMainAxis = 0;
       lo.pins.forEach((x) {
         if (x.mainAxis > maxMainAxis) {
@@ -87,10 +87,14 @@ class Game extends _Game with _$Game {
       });
 
       maxMoves = moves.length;
+      var rdmStockPadding = rng.nextInt(stockPadding);
+      var stockInterval = (maxMoves - rdmStockPadding) / numStockMoves;
+
       for (var i = 0; i < maxMoves; i++) {
         List<int> possibleTargets = [];
         if (i != 0 && countStockMoves > 0) {
-          if (rng.nextDouble() <= stockChance || countStockMoves == maxMoves - i) {
+          if (i >= ((numStockMoves - countStockMoves + 1) * stockInterval) + rdmStockPadding || countStockMoves == maxMoves - i) {
+          //if (rng.nextDouble() <= stockChance || countStockMoves == maxMoves - i) {
             stockDeck.add(moves.removeLast());
             countStockMoves--;
             continue;
