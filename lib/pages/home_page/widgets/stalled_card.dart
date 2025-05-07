@@ -70,6 +70,11 @@ final class StalledCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 TextButton(
+                      onPressed: Actions.handler(context, const RestartIntent()),
+                      child: Text(s.restartGameAction),
+                ),
+                const SizedBox(height: 12),
+                TextButton(
                   onPressed: Actions.handler(context, const NewGameIntent()),
                   child: Text(s.stalledCardNewGameAction),
                 ),
