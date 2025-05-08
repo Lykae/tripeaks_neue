@@ -165,6 +165,12 @@ abstract class AppLocalizations {
   /// **'New Game'**
   String get newGameAction;
 
+  /// Label of a control that starts a new rush game.
+  ///
+  /// In en, this message translates to:
+  /// **'New Rush Game'**
+  String get newRushGameAction;
+
   /// Label of a control that shows layout options then starts a new game.
   ///
   /// In en, this message translates to:

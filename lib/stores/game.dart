@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:logger/logger.dart';
@@ -7,9 +8,48 @@ import 'package:tripeaks_neue/stores/data/pin.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/util/json_object.dart';
-import 'package:tripeaks_neue/widgets/constants.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 part "game.g.dart";
+
+class RushInfo {
+  RushInfo({
+  required int rushTimer,
+  required int rushScore,
+  required bool isRushTimerRunning,
+  });
+
+  int rushTimer = c.initialRushTimer;
+  int rushScore = 0;
+  bool isRushTimerRunning = false;
+
+  RushInfo.fresh() : this(rushTimer: c.initialRushTimer, rushScore: 0, isRushTimerRunning: false);
+
+  void stopTimer() {
+    isRushTimerRunning = false;
+  }
+
+  void startTimer(Future<void> Function() callback) {
+    isRushTimerRunning = true;
+
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      if (isRushTimerRunning == false) {
+        timer.cancel();
+        callback();
+        print('Timer ended');
+      }
+      if (rushTimer <= 0) {
+        timer.cancel();
+        isRushTimerRunning = false;
+        callback();
+        print('Timer ended');
+      } else {
+        rushTimer--;
+        print('Time left: $rushTimer');
+      }
+    });
+  }
+}
 
 // ignore: library_private_types_in_public_api
 class Game extends _Game with _$Game {
@@ -30,11 +70,13 @@ class Game extends _Game with _$Game {
     required super.chain,
     required super.isPlayed,
     required super.statisticsPushed,
+    super.rushInfo
   });
 
-  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false, bool alwaysSolvable = true}) {
+  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false, bool alwaysSolvable = true, RushInfo? rushInfo}) {
     assert(deck.length == 52);
     final lo = layout ?? threePeaksLayout;
+
     if (alwaysSolvable) {
       var rng = Random();
       List<CardValue> stockDeck = [];
@@ -194,11 +236,12 @@ class Game extends _Game with _$Game {
       isCleared: false,
       isStalled: isStalled,
       isEnded: isStalled,
-      score: 0,
+      score: (rushInfo == null ? 0 : rushInfo.rushScore),
       remaining: lo.cardCount,
       chain: 0,
       isPlayed: false,
       statisticsPushed: false,
+      rushInfo: rushInfo
     );
     
   }
@@ -225,6 +268,7 @@ class Game extends _Game with _$Game {
       "started": started.toIso8601String(),
       "isPlayed": isPlayed,
       "statisticsPushed": statisticsPushed,
+      "rushInfo": rushInfo
     };
   }
 
@@ -252,6 +296,7 @@ class Game extends _Game with _$Game {
       chain: jsonObject.read<int>("chain"),
       isPlayed: jsonObject.read<bool>("isPlayed"),
       statisticsPushed: jsonObject.read<bool>("statisticsPushed"),
+      rushInfo: jsonObject.read<RushInfo>("rushInfo"),
     );
   }
 }
@@ -274,6 +319,7 @@ abstract class _Game with Store {
     required int score,
     required int remaining,
     required int chain,
+    this.rushInfo,
   }) : _isCleared = isCleared,
        _isStalled = isStalled,
        _isEnded = isEnded,
@@ -319,6 +365,26 @@ abstract class _Game with Store {
   @readonly
   int _chain;
 
+  final RushInfo? rushInfo;
+
+  Future<void> rushGameFinished() async {
+    _isEnded = true;
+    _isCleared = false;
+    _isStalled = true;
+    rushInfo?.rushScore = _score;
+    print("rush game over");
+  }
+
+  void startRushTimer() {
+    final info = rushInfo;
+
+    if (info != null) {
+      if (!info.isRushTimerRunning) {
+        rushInfo?.startTimer(rushGameFinished);
+      }
+    }
+  }
+
   @action
   bool take(Pin pin) {
     final tile = board[pin.index];
@@ -330,6 +396,9 @@ abstract class _Game with Store {
     }
 
     isPlayed = true;
+
+    startRushTimer();
+    rushInfo?.rushTimer += c.rushGainOnTake;
 
     board[pin.index].take();
     discard.add(Tile(card: tile.card, pin: Pin.unpin));
@@ -347,6 +416,7 @@ abstract class _Game with Store {
       // Clearing the game obviously ends a chain, so you get a score
       // Also a bonus for the number of cards of the current layout
       _score += _chain * _chain + layout.cardCount;
+      rushInfo?.rushScore = _score;
       history.add(Event(pin: pin, score: currentScore, chain: currentChain));
       _logger.d("Take. Chain: $_chain, Score: $_score");
       return true;
@@ -357,6 +427,7 @@ abstract class _Game with Store {
       _isEnded = true;
       _isCleared = false;
       _isStalled = true;
+      rushInfo?.stopTimer();
     }
 
     history.add(Event(pin: pin, score: currentScore, chain: currentChain));
@@ -371,6 +442,7 @@ abstract class _Game with Store {
     }
 
     isPlayed = true;
+    startRushTimer();
 
     // You only get a score when a chain is completed
     history.add(Event(pin: Pin.unpin, score: _score, chain: _chain));

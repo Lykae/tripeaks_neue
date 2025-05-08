@@ -120,6 +120,18 @@ mixin _$Session on _Session, Store {
     }
   }
 
+
+  @override
+  void newRushGame(Future<void> Function() callback, RushInfo? rushInfo) {
+    final _$actionInfo =
+        _$_SessionActionController.startAction(name: '_Session.newRushGame');
+    try {
+      return super.newRushGame(callback, rushInfo);
+    } finally {
+      _$_SessionActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   void restart(Future<void> Function() callback) {
     final _$actionInfo =

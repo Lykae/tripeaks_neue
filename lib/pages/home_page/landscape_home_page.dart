@@ -107,6 +107,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                                 score: game.score,
                                 id: game.started.millisecondsSinceEpoch + 1,
                                 show: game.isStalled,
+                                isRushGame: game.rushInfo != null,
                               );
                             },
                           ),

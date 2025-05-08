@@ -47,6 +47,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newGameAction => 'New Game';
 
   @override
+  String get newRushGameAction => 'New Rush Game';
+
+  @override
   String get newGameWithLayoutAction => 'New Game with Layout...';
 
   @override

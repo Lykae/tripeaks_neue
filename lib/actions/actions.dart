@@ -86,7 +86,27 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
     final settings = Provider.of<Settings>(context, listen: false);
-    session.newGame(settings.sounds.playStart);
+    RushInfo? rushInfo = session.game.rushInfo;
+    if (rushInfo == null) {
+      session.newGame(settings.sounds.playStart);
+    } else {
+      session.newRushGame(settings.sounds.playStart, null);
+    }
+  }
+}
+
+final class NewRushGameAction extends ContextAction<NewRushGameIntent> {
+  NewRushGameAction();
+
+  @override
+  void invoke(NewRushGameIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    _closeDrawer(context);
+    final session = Provider.of<Session>(context, listen: false);
+    final settings = Provider.of<Settings>(context, listen: false);
+    session.newRushGame(settings.sounds.playStart, session.game.rushInfo);
   }
 }
 

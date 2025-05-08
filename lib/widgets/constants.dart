@@ -23,6 +23,9 @@ const double stockShift = 30.0;
 const double utilPageMargin = 6.0;
 const double verticalTabsThreshold = 500;
 
+const int initialRushTimer = 7;
+const int rushGainOnTake = 2;
+
 const commonBorderRadius = BorderRadius.all(Radius.circular(commonRadius));
 
 const EdgeInsets cardPadding = EdgeInsets.symmetric(

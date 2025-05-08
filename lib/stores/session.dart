@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
@@ -70,9 +72,11 @@ abstract class _Session with Store {
   }) : _statistics = statistics,
        _game = game {
     whenCleared = when((_) => _game.isCleared, () {
-      if (game.isPlayed && !game.statisticsPushed) {
-        game.statisticsPushed = true;
-        _statistics = _statistics.withGame(SingleGameStatistics.of(game));
+      if (game.rushInfo == null) {
+        if (game.isPlayed && !game.statisticsPushed) {
+          game.statisticsPushed = true;
+          _statistics = _statistics.withGame(SingleGameStatistics.of(game));
+        }
       }
     });
   }
@@ -126,6 +130,38 @@ abstract class _Session with Store {
   }
 
   @action
+  void newRushGame(Future<void> Function() callback, RushInfo? rushInfo) {
+    rushInfo ??= RushInfo.fresh();
+    print("bread: " + rushInfo.toString());
+    final next = _makeRushGame(rushInfo);
+    for (final tile in next.board) {
+      tile.hide();
+    }
+
+    if (!_game.isCleared && _game.isPlayed) {
+      _game.forfeit();
+      _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      whenCleared?.reaction.dispose();
+    }
+
+    if (kIsWasm || kIsWeb) {
+      writeStatistics();
+    }
+
+    whenCleared = when((_) => next.isCleared, () {
+      final nextInfo = next.rushInfo;
+      if (nextInfo != null) {
+        if (nextInfo.rushTimer > 0) {
+          newRushGame(callback, nextInfo);
+          print("new game, current score: " + nextInfo.rushScore.toString());
+        }
+      }
+    });
+    _game = next;
+    _setupBoard(next, callback);
+  }
+
+  @action
   void restart(Future<void> Function() callback) {
     final next = _game.rebuild();
     for (final tile in next.board) {
@@ -170,6 +206,29 @@ abstract class _Session with Store {
     }
 
     return make();
+  }
+
+  static Game _makeRushGame(RushInfo rushInfo) {
+    final layoutObj = _pickRandomLayout().implementation;
+
+    Game make() {
+      final deck = getDeck()..shuffle();
+      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: false, alwaysSolvable: true, rushInfo: rushInfo);
+    }
+
+    for (var i = 0; i < 10; i++) {
+      final game = make();
+      if (!game.isEnded) {
+        return game;
+      }
+    }
+
+    return make();
+  }
+
+  static Peaks _pickRandomLayout() {
+    final rng = Random();
+    return Peaks.values[rng.nextInt(Peaks.values.length)];
   }
 
   void _setupBoard(Game next, Future<void> Function() callback) async {

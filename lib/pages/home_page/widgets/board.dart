@@ -11,6 +11,28 @@ class LandscapeBoard extends StatelessWidget {
   final double scale;
   final BackOptions back;
 
+  Stream<String> get rushTimerStream async* {
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 200));
+      yield getRushTimer();
+    }
+  }
+
+  Stream<String> get rushScoreStream async* {
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 200));
+      yield getRushScore();
+    }
+  }
+
+  String getRushTimer() {
+    return game.rushInfo == null ? "" : "TIME: ${game.rushInfo?.rushTimer}s";
+  }
+
+  String getRushScore() {
+    return game.rushInfo == null ? "" : "SCORE: ${game.score}";
+  }
+
   @override
   Widget build(BuildContext context) {
     final cellSize = c.cardSize + c.cellPadding;
@@ -18,7 +40,29 @@ class LandscapeBoard extends StatelessWidget {
     final rowShift = quarter;
     final width = quarter * game.layout.width;
     final height = rowShift * game.layout.height;
-    return SizedBox(
+    return Column(
+      children: [ Column(mainAxisSize: MainAxisSize.min,
+        children: [StreamBuilder<String>(
+              stream: rushScoreStream,
+              builder: (context, snapshot) {
+                return Flexible(child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 24),),
+                ));
+              },
+            ),
+            StreamBuilder<String>(
+              stream: rushTimerStream,
+              builder: (context, snapshot) {
+                return Flexible(child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 24),),
+                ));
+              },
+            ),
+            ],
+      ),
+      Expanded(child: Center(child: SizedBox(
       width: (width * scale).floorToDouble(),
       height: (height * scale).floorToDouble(),
       child: FittedBox(
@@ -37,8 +81,8 @@ class LandscapeBoard extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      ))),
+    )]);
   }
 }
 
@@ -49,13 +93,56 @@ class PortraitBoard extends StatelessWidget {
   final double scale;
   final BackOptions back;
 
+  Stream<String> get rushTimerStream async* {
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 200));
+      yield getRushTimer();
+    }
+  }
+
+  Stream<String> get rushScoreStream async* {
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 200));
+      yield getRushScore();
+    }
+  }
+
+  String getRushTimer() {
+    return game.rushInfo == null ? "" : "TIME: ${game.rushInfo?.rushTimer}s";
+  }
+
+  String getRushScore() {
+    return game.rushInfo == null ? "" : "SCORE: ${game.score}";
+  }
+
   @override
   Widget build(BuildContext context) {
     final cellSize = c.cardSize + c.cellPadding;
     final quarter = cellSize / 2.0;
     final width = quarter * game.layout.height;
     final height = quarter * game.layout.width;
-    return SizedBox(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [ Column(mainAxisSize: MainAxisSize.min,
+        children: [StreamBuilder<String>(
+              stream: rushScoreStream,
+              builder: (context, snapshot) {
+                return FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 18),),
+                );
+              },
+            ),
+            StreamBuilder<String>(
+              stream: rushTimerStream,
+              builder: (context, snapshot) {
+                return FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 18),),
+                );
+              },
+            ),
+            ],), 
+            Center(child: SizedBox(
       width: (width * scale).floorToDouble(),
       height: (height * scale).floorToDouble(),
       child: FittedBox(
@@ -75,6 +162,6 @@ class PortraitBoard extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ))]);
   }
 }

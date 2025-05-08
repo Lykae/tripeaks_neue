@@ -92,6 +92,11 @@ class HomePageDrawer extends StatelessWidget {
                     intent: const NewGameIntent(),
                   ),
                   DrawerListTile(
+                    icon: Icons.hourglass_bottom,
+                    title: s.newRushGameAction,
+                    intent: const NewRushGameIntent(),
+                  ),
+                  DrawerListTile(
                     icon: CustomIcons.pickAndPlay,
                     title: s.newGameWithLayoutAction,
                     intent: const NewGameWithLayoutIntent(),

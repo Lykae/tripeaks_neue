@@ -21,6 +21,10 @@ final class NewGameIntent extends Intent {
   const NewGameIntent();
 }
 
+final class NewRushGameIntent extends Intent {
+  const NewRushGameIntent();
+}
+
 final class NewGameWithLayoutIntent extends Intent {
   const NewGameWithLayoutIntent();
 }

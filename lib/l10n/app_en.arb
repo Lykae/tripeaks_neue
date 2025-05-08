@@ -82,6 +82,12 @@
         "context": "homePage:drawer",
         "description": "Label of a control that starts a new game."
     },
+    "newRushGameAction": "New Rush Game",
+    "@newRushGameAction": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Label of a control that starts a new rush game."
+    },
     "newGameWithLayoutAction": "New Game with Layout...",
     "@newGameWithLayoutAction": {
         "type": "text",
