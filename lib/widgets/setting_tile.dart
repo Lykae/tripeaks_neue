@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/item_container.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/item_container.dart';
 
 final class SettingTile extends StatelessWidget {
   const SettingTile({

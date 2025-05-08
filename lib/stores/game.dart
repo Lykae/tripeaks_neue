@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:logger/logger.dart';
-import 'package:tripeaks_neue/stores/data/card_value.dart';
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/data/pin.dart';
-import 'package:tripeaks_neue/stores/tile.dart';
+import 'package:tripeaks_rush/stores/data/card_value.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/data/pin.dart';
+import 'package:tripeaks_rush/stores/tile.dart';
 import 'package:mobx/mobx.dart';
-import 'package:tripeaks_neue/util/json_object.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/util/json_object.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 part "game.g.dart";
 

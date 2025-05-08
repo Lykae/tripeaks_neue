@@ -7,11 +7,11 @@ script:
 AppDir:
   path: ./AppDir
   app_info:
-    id: io.github.mimoguz.tripeaksneue
-    name: TriPeaks NEUE
+    id: io.github.lykae.tripeaksrush
+    name: TriPeaks RUSH
     icon: icon.svg
     version: latest
-    exec: tripeaks_neue
+    exec: tripeaks_rush
     exec_args: $@
   apt:
     arch: amd64
@@ -51,7 +51,7 @@ AppDir:
       image: appimagecrafters/tests-env:ubuntu-xenial
       command: ./AppRun
   after_bundle:
-    - cp build/linux/x64/release/bundle/tripeaks_neue AppDir
+    - cp build/linux/x64/release/bundle/tripeaks_rush AppDir
     - cp -r build/linux/x64/release/bundle/lib/. AppDir/lib
     - cp -r build/linux/x64/release/bundle/data AppDir
     - mkdir -p AppDir/usr/share/icons/

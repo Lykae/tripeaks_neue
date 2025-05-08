@@ -1,13 +1,13 @@
 import 'package:fast_rich_text/fast_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/group_tile.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
-import 'package:tripeaks_neue/widgets/shortcut_hint.dart';
+import 'package:tripeaks_rush/assets/custom_icons.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/pages/home_page/widgets/game_button.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/group_tile.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/widgets/shortcut_hint.dart';
 
 final class Interaction extends StatelessWidget {
   const Interaction({super.key});

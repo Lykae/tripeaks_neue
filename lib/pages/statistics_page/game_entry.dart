@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/list_tile.dart';
+import 'package:tripeaks_rush/assets/custom_icons.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/pages/statistics_page/result_chip.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/list_tile.dart';
 
 final class GameEntry extends StatelessWidget {
   const GameEntry({super.key, required this.place, required this.game, this.showLayout = true});

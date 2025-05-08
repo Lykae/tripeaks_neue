@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/stores/data/back_options.dart';
-import 'package:tripeaks_neue/stores/data/card_value.dart';
-import 'package:tripeaks_neue/stores/tile.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/actions/intents.dart';
+import 'package:tripeaks_rush/assets/custom_icons.dart';
+import 'package:tripeaks_rush/stores/data/back_options.dart';
+import 'package:tripeaks_rush/stores/data/card_value.dart';
+import 'package:tripeaks_rush/stores/tile.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 final class TileCard extends StatelessWidget {
   const TileCard(

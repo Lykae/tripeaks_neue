@@ -1,4 +1,4 @@
-import 'package:tripeaks_neue/util/json_object.dart';
+import 'package:tripeaks_rush/util/json_object.dart';
 
 enum Rank {
   two._("2"),

@@ -1,5 +1,5 @@
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/data/pin.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/stores/data/pin.dart';
 
 final class Layout {
   const Layout({

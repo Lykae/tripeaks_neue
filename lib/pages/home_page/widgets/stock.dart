@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
-import 'package:tripeaks_neue/stores/data/back_options.dart';
-import 'package:tripeaks_neue/stores/game.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/pages/home_page/widgets/cards.dart';
+import 'package:tripeaks_rush/stores/data/back_options.dart';
+import 'package:tripeaks_rush/stores/game.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 class LandscapeStock extends StatelessWidget {
   const LandscapeStock(this.game, {super.key, required this.scale, required this.back});

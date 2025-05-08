@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/assets/custom_icons.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 class CardPlaceHolder extends StatelessWidget {
   const CardPlaceHolder({super.key, required this.scale});

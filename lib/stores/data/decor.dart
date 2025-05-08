@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/assets/custom_icons.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
 
 /// Users of this enum, when they need an ordinal value, should consider using the 'value' property
 /// instead of the 'index' property of an enum variant, so that new variants can be added or the existing

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
+import 'package:tripeaks_rush/pages/home_page/widgets/cleared_card.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});

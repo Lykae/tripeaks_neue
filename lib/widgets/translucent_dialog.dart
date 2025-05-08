@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 class TranslucentDialog extends StatelessWidget {
   const TranslucentDialog({super.key, this.actions, this.title, required this.content});

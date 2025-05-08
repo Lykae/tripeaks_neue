@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:tripeaks_neue/stores/data/decor.dart';
-import 'package:tripeaks_neue/stores/sound_effects.dart';
-import 'package:tripeaks_neue/util/json_object.dart';
-import 'package:tripeaks_neue/util/get_io.dart'
+import 'package:tripeaks_rush/stores/data/decor.dart';
+import 'package:tripeaks_rush/stores/sound_effects.dart';
+import 'package:tripeaks_rush/util/json_object.dart';
+import 'package:tripeaks_rush/util/get_io.dart'
     // ignore: uri_does_not_exist
-    if (dart.library.io) 'package:tripeaks_neue/util/local_io.dart'
+    if (dart.library.io) 'package:tripeaks_rush/util/local_io.dart'
     // ignore: uri_does_not_exist
-    if (dart.library.js_util) 'package:tripeaks_neue/util/web_io.dart';
+    if (dart.library.js_util) 'package:tripeaks_rush/util/web_io.dart';
 
 part 'settings.g.dart';
 

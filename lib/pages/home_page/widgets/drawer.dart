@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_rush/actions/intents.dart';
+import 'package:tripeaks_rush/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/stores/settings.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 class HomePageDrawer extends StatelessWidget {
   const HomePageDrawer({super.key});

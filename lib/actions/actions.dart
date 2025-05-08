@@ -4,15 +4,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/pages/home_page/home_page.dart';
-import 'package:tripeaks_neue/pages/info_page/info_page.dart';
-import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
-import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
-import 'package:tripeaks_neue/stores/game.dart';
-import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/stores/sound_effects.dart';
-import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
+import 'package:tripeaks_rush/pages/home_page/home_page.dart';
+import 'package:tripeaks_rush/pages/info_page/info_page.dart';
+import 'package:tripeaks_rush/pages/settings_page/settings_page.dart';
+import 'package:tripeaks_rush/pages/statistics_page/statistics_page.dart';
+import 'package:tripeaks_rush/stores/game.dart';
+import 'package:tripeaks_rush/stores/session.dart';
+import 'package:tripeaks_rush/stores/settings.dart';
+import 'package:tripeaks_rush/stores/sound_effects.dart';
+import 'package:tripeaks_rush/widgets/select_layout_dialog.dart';
 
 import 'intents.dart';
 

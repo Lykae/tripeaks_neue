@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:tripeaks_neue/util/io.dart';
+import 'package:tripeaks_rush/util/io.dart';
 
 final class LocalIO implements AbstractIO {
   LocalIO._();

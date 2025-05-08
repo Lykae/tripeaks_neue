@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/external_link.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/external_link.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 class PrivacyPolicy extends StatelessWidget {
   const PrivacyPolicy({super.key});
@@ -27,9 +27,9 @@ class PrivacyPolicy extends StatelessWidget {
             ),
             const SizedBox(height: 12.0),
             ExternalLink(
-              uri: Uri.https("github.com", "mimoguz/tripeaks_neue"),
+              uri: Uri.https("github.com", "mimoguz/tripeaks_rush"),
               alt: "Repository link",
-              label: "TriPeaks NEUE on GitHub",
+              label: "TriPeaks RUSH on GitHub",
             ),
           ],
         ),

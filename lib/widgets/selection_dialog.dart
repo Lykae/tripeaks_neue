@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/widgets/list_tile.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/widgets/list_tile.dart';
+import 'package:tripeaks_rush/widgets/translucent_dialog.dart';
 
 class SelectionDialog extends StatelessWidget {
   const SelectionDialog({super.key, required this.options, required this.selected, this.title});

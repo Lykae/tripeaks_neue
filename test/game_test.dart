@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tripeaks_neue/stores/data/card_value.dart';
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/game.dart';
-import 'package:tripeaks_neue/stores/tile.dart';
+import 'package:tripeaks_rush/stores/data/card_value.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/game.dart';
+import 'package:tripeaks_rush/stores/tile.dart';
 
 void main() {
   test("Rebuilding game", () {

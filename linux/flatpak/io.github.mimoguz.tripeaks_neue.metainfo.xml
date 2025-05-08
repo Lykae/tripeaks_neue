@@ -2,17 +2,14 @@
 <component type="desktop-application">
     <id>io.github.mimoguz.tripeaks_neue</id>
 
-    <name>TriPeaks NEUE</name>
-    <summary>Patience game</summary>
-    <url type="homepage">https://github.com/mimoguz/tripeaks_neue</url>
-    <url type="bugtracker">https://github.com/mimoguz/tripeaks_neue/issues</url>
-    <url type="donation">https://buymeacoffee.com/mimoguz</url>
+    <name>TriPeaks RUSH</name>
+    <summary>Arcade Solitaire Game</summary>
 
     <metadata_license>MIT</metadata_license>
     <project_license>AGPL-3.0-only</project_license>
 
-    <developer id="io.github.mimoguz">
-        <name>Oguz Tas</name>
+    <developer id="io.github.lykae">
+        <name>Lykae</name>
     </developer>
 
     <!-- Desktop AND mobile supported -->
@@ -85,29 +82,12 @@
     </screenshots>
 
     <releases>
-        <release version="0.9.0" date="2025-04-18">
+        <release version="0.1" date="2025-04-18">
             <description>
                 <ul>
-                    <li>Fixed saving state when the user exits the app via the back button or gesture.</li>
-                    <li>Added card back colour customisation.</li>
-                    <li>Tweaked the swipe indicator.</li>
-                    <li>Settings page is now more compact.</li>
+                    <li>New algorithm, new gamemode.</li>
                 </ul>
             </description>
-        </release>
-        <release version="0.8.4" date="2025-04-05">
-            <description>
-                <ul>
-                    <li>Fixed an issue with undo: Wrong chain length &amp; score were being restored.</li>
-                    <li>Fixed an issue with statistics: Current chain weren't included in the score
-                        if a new game started without clearing the current game.</li>
-                    <li>The card counter now also shows the current chain (circle indicators).</li>
-                    <li>"Dependencies" card now also includes indirect dependencies.</li>
-                    <li>Added a new card decoration.</li>
-                </ul>
-            </description>
-        </release>
-        <release version="0.8.3" date="2025-04-03">
         </release>
     </releases>
 </component>

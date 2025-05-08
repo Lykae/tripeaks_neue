@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/list_tile.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/session.dart';
+import 'package:tripeaks_rush/stores/settings.dart';
+import 'package:tripeaks_rush/widgets/list_tile.dart';
+import 'package:tripeaks_rush/widgets/translucent_dialog.dart';
 
 class SelectLayoutDialog extends StatefulWidget {
   const SelectLayoutDialog({super.key});

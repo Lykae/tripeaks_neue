@@ -8,9 +8,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:tripeaks_neue/main.dart';
-import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_rush/main.dart';
+import 'package:tripeaks_rush/stores/session.dart';
+import 'package:tripeaks_rush/stores/settings.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

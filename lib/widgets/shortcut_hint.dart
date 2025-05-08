@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
 
 class KeyboardKey extends StatelessWidget {
   const KeyboardKey({super.key, required this.keyboardKey});

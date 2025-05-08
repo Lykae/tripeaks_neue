@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tripeaks_neue/actions/actions.dart';
-import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/settings_page/always_solvable_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/group_title.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/actions/actions.dart';
+import 'package:tripeaks_rush/actions/intents.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/pages/settings_page/always_solvable_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/colour_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/decor_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/layout_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/show_all_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/sound_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/start_empty_setting.dart';
+import 'package:tripeaks_rush/pages/settings_page/theme_mode_setting.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/group_title.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

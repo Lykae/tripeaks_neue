@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/oss_licenses.dart';
-import 'package:tripeaks_neue/pages/info_page/license_dialog.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/external_link.dart';
-import 'package:tripeaks_neue/widgets/group_tile.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/oss_licenses.dart';
+import 'package:tripeaks_rush/pages/info_page/license_dialog.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/external_link.dart';
+import 'package:tripeaks_rush/widgets/group_tile.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 class Dependencies extends StatelessWidget {
   const Dependencies({super.key});

@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/home_page/home_page.dart';
-import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/welcome_dialog.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/pages/home_page/home_page.dart';
+import 'package:tripeaks_rush/stores/session.dart';
+import 'package:tripeaks_rush/stores/settings.dart';
+import 'package:tripeaks_rush/widgets/welcome_dialog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +60,7 @@ class _MainAppState extends State<MainApp> {
           (context) => MaterialApp(
             localizationsDelegates: [AppLocalizations.delegate],
             debugShowCheckedModeBanner: false,
-            title: "TriPeaks NEUE",
+            title: "TriPeaks RUSH",
             supportedLocales: [Locale("en")],
             themeMode: settings.themeMode,
             theme: _defaultLight,

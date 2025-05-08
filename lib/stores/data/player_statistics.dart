@@ -1,6 +1,6 @@
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
-import 'package:tripeaks_neue/util/json_object.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_rush/util/json_object.dart';
 
 final class PlayerStatistics {
   PlayerStatistics._({required this.overallStatistics, required this.perLayoutStatistics});

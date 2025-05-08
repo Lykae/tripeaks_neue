@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_rush/assets/custom_icons.dart';
 
 class ExternalLink extends StatelessWidget {
   const ExternalLink({super.key, required this.uri, this.label, this.alt});

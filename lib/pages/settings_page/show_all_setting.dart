@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/widgets/setting_tile.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/stores/session.dart';
+import 'package:tripeaks_rush/widgets/setting_tile.dart';
 
 final class ShowAllSetting extends StatelessWidget {
   const ShowAllSetting({super.key});

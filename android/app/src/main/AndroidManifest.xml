@@ -12,7 +12,7 @@
 
     <application
         android:banner="@mipmap/ic_launcher"
-        android:label="TriPeaks NEUE"
+        android:label="TriPeaks RUSH"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

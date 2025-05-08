@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "io.github.mimoguz.tripeaksneue"
+    namespace = "io.github.lykae.tripeaksrush"
     compileSdk = flutter.compileSdkVersion
     // ndkVersion = flutter.ndkVersion
     ndkVersion = "27.0.12077973"
@@ -38,7 +38,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.github.mimoguz.tripeaksneue"
+        applicationId = "io.github.lykae.tripeaksrush"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

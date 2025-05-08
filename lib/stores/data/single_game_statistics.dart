@@ -1,6 +1,6 @@
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/game.dart';
-import 'package:tripeaks_neue/util/json_object.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/game.dart';
+import 'package:tripeaks_rush/util/json_object.dart';
 
 final class SingleGameStatistics {
   const SingleGameStatistics({

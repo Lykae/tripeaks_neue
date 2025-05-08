@@ -1,8 +1,8 @@
 import 'package:fast_rich_text/fast_rich_text.dart';
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 class Scoring extends StatelessWidget {
   const Scoring({super.key});

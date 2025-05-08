@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tripeaks_neue/actions/actions.dart';
-import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/info_page/about_tab.dart';
-import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/my_vertical_tab_view.dart';
+import 'package:tripeaks_rush/actions/actions.dart';
+import 'package:tripeaks_rush/actions/intents.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/pages/info_page/about_tab.dart';
+import 'package:tripeaks_rush/pages/info_page/howto_tab.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/my_vertical_tab_view.dart';
 
 class InfoPage extends StatefulWidget {
   const InfoPage({super.key});

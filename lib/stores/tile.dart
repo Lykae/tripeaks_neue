@@ -1,8 +1,8 @@
-import "package:tripeaks_neue/stores/data/card_value.dart";
-import "package:tripeaks_neue/stores/data/layout.dart";
-import "package:tripeaks_neue/stores/data/pin.dart";
+import "package:tripeaks_rush/stores/data/card_value.dart";
+import "package:tripeaks_rush/stores/data/layout.dart";
+import "package:tripeaks_rush/stores/data/pin.dart";
 import "package:mobx/mobx.dart";
-import "package:tripeaks_neue/util/json_object.dart";
+import "package:tripeaks_rush/util/json_object.dart";
 
 part "tile.g.dart";
 

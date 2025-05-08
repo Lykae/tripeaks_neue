@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/data/player_statistics.dart';
-import 'package:tripeaks_neue/widgets/group_tile.dart';
-import 'package:tripeaks_neue/widgets/list_tile.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/stores/data/player_statistics.dart';
+import 'package:tripeaks_rush/widgets/group_tile.dart';
+import 'package:tripeaks_rush/widgets/list_tile.dart';
 
 final class Summary extends StatelessWidget {
   const Summary(this.statistics, {super.key});

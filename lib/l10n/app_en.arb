@@ -416,7 +416,7 @@
         "description": "Label of the new game button of the dialog."
     },
     "@_WELCOME_DIALOG": {},
-    "welcomeDialogTitle": "Welcome to TriPeaks NEUE",
+    "welcomeDialogTitle": "Welcome to TriPeaks RUSH",
     "@welcomeDialogTitle": {
         "type": "text",
         "context": "welcomeDialog",

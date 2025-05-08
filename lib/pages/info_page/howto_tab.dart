@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
-import 'package:tripeaks_neue/pages/info_page/how_to_play.dart';
-import 'package:tripeaks_neue/pages/info_page/interaction.dart';
-import 'package:tripeaks_neue/pages/info_page/scoring.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/pages/info_page/expandable_box.dart';
+import 'package:tripeaks_rush/pages/info_page/how_to_play.dart';
+import 'package:tripeaks_rush/pages/info_page/interaction.dart';
+import 'package:tripeaks_rush/pages/info_page/scoring.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 class HowtoTab extends StatefulWidget {
   const HowtoTab({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 class ListItemContainer extends StatelessWidget {
   const ListItemContainer({super.key, required this.child});

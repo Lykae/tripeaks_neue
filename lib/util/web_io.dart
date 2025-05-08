@@ -1,7 +1,7 @@
 import "dart:convert";
 
 import "package:logger/web.dart";
-import "package:tripeaks_neue/util/io.dart";
+import "package:tripeaks_rush/util/io.dart";
 import "package:web/web.dart";
 
 final class WebIO implements AbstractIO {

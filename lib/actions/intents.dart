@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/stores/data/decor.dart';
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/data/pin.dart';
+import 'package:tripeaks_rush/stores/data/decor.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/data/pin.dart';
 
 final class TakeIntent extends Intent {
   const TakeIntent(this.pin);

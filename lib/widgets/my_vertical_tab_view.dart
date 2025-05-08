@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
 
 class MyVerticalTabView extends StatefulWidget {
   const MyVerticalTabView({super.key, required this.tabs, required this.contents, this.width = 150});

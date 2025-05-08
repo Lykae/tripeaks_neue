@@ -2,16 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:tripeaks_neue/stores/data/card_value.dart';
-import 'package:tripeaks_neue/stores/data/layout.dart';
-import 'package:tripeaks_neue/stores/data/player_statistics.dart';
-import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
-import 'package:tripeaks_neue/stores/game.dart';
-import 'package:tripeaks_neue/util/get_io.dart'
+import 'package:tripeaks_rush/stores/data/card_value.dart';
+import 'package:tripeaks_rush/stores/data/layout.dart';
+import 'package:tripeaks_rush/stores/data/player_statistics.dart';
+import 'package:tripeaks_rush/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_rush/stores/game.dart';
+import 'package:tripeaks_rush/util/get_io.dart'
     // ignore: uri_does_not_exist
-    if (dart.library.io) 'package:tripeaks_neue/util/local_io.dart'
+    if (dart.library.io) 'package:tripeaks_rush/util/local_io.dart'
     // ignore: uri_does_not_exist
-    if (dart.library.js_util) 'package:tripeaks_neue/util/web_io.dart';
+    if (dart.library.js_util) 'package:tripeaks_rush/util/web_io.dart';
 
 part "session.g.dart";
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/statistics_page/game_entry.dart';
-import 'package:tripeaks_neue/pages/statistics_page/summary.dart';
-import 'package:tripeaks_neue/stores/data/player_statistics.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/group_tile.dart';
-import 'package:tripeaks_neue/widgets/group_title.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/pages/statistics_page/game_entry.dart';
+import 'package:tripeaks_rush/pages/statistics_page/summary.dart';
+import 'package:tripeaks_rush/stores/data/player_statistics.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/group_tile.dart';
+import 'package:tripeaks_rush/widgets/group_title.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 final class StatisticsTab extends StatelessWidget {
   const StatisticsTab(this.statistics, {super.key, this.showLayout = true});

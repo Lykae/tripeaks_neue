@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_rush/l10n/app_localizations.dart';
+import 'package:tripeaks_rush/stores/data/single_game_statistics.dart';
 
 class ResultChip extends StatelessWidget {
   const ResultChip(this.game, {super.key});

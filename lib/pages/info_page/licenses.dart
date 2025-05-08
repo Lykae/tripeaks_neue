@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/src/version.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/external_link.dart';
-import 'package:tripeaks_neue/widgets/group_tile.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_rush/src/version.dart';
+import 'package:tripeaks_rush/widgets/constants.dart' as c;
+import 'package:tripeaks_rush/widgets/external_link.dart';
+import 'package:tripeaks_rush/widgets/group_tile.dart';
+import 'package:tripeaks_rush/widgets/scroll_indicator.dart';
 
 class Licenses extends StatelessWidget {
   const Licenses({super.key});
@@ -24,9 +24,20 @@ class Licenses extends StatelessWidget {
           ),
           children: [
             LicenseEntry(
+              link: Uri.https("github.com", "lykae/tripeaks_rush"),
+              title: "TriPeaks RUSH v$version",
+              description: "Lykae, 2025.",
+              license: "GNU Affero General Public License (AGPL) Version 3",
+              exceptions: [
+                "fonts/actions.ttf: This file includes symbols derived from "
+                    "Material Icons, and therefore available under Apache License "
+                    "Version 2.0 (same as Material Icons).",
+              ],
+            ),
+            LicenseEntry(
               link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
-              title: "Tripeaks NEUE v$version",
-              description: "Oguz Tas, 2025.",
+              title: "TriPeaks NEUE v$version",
+              description: "Oguz Taz, 2025.",
               license: "GNU Affero General Public License (AGPL) Version 3",
               exceptions: [
                 "fonts/actions.ttf: This file includes symbols derived from "
