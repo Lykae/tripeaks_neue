@@ -122,7 +122,7 @@ class PortraitBoard extends StatelessWidget {
     final width = quarter * game.layout.height;
     final height = quarter * game.layout.width;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [ Column(mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [ Column(mainAxisSize: MainAxisSize.min,
         children: [StreamBuilder<String>(
               stream: rushScoreStream,
               builder: (context, snapshot) {

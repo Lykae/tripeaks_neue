@@ -474,6 +474,8 @@ abstract class _Game with Store {
     _isEnded = false;
     _isStalled = false;
 
+    rushInfo?.rushTimer -= c.rushGainOnTake;
+
     final event = history.removeLast();
     final card = discard.removeLast().card;
 
