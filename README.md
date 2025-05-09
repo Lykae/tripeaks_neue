@@ -1,6 +1,6 @@
 # TriPeaks RUSH
 
-A fork of a simple [Tri Peaks game](https://github.com/mimoguz/tripeaks_neue), using Flutter. This project aims to add a generation algorithm that makes always solvable games.<br>
+A fork of [Tri Peaks NEUE](https://github.com/mimoguz/tripeaks_neue), using Flutter. This project aims to add a generation algorithm that always makes solvable games and a new game mode.<br>
 
 
 ## License
