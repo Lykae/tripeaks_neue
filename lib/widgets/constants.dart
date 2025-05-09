@@ -25,6 +25,8 @@ const double verticalTabsThreshold = 500;
 
 const int initialRushTimer = 7;
 const int rushGainOnTake = 2;
+const double trackerFontSizePortrait = 18;
+const double trackerFontSizeLandscape = 24;
 
 const commonBorderRadius = BorderRadius.all(Radius.circular(commonRadius));
 

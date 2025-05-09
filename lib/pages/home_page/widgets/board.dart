@@ -47,7 +47,7 @@ class LandscapeBoard extends StatelessWidget {
               builder: (context, snapshot) {
                 return Flexible(child: FittedBox(
                   fit: BoxFit.fitHeight,
-                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 24),),
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: c.trackerFontSizeLandscape),),
                 ));
               },
             ),
@@ -56,7 +56,7 @@ class LandscapeBoard extends StatelessWidget {
               builder: (context, snapshot) {
                 return Flexible(child: FittedBox(
                   fit: BoxFit.fitHeight,
-                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 24),),
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: c.trackerFontSizeLandscape),),
                 ));
               },
             ),
@@ -121,27 +121,8 @@ class PortraitBoard extends StatelessWidget {
     final quarter = cellSize / 2.0;
     final width = quarter * game.layout.height;
     final height = quarter * game.layout.width;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [ Column(mainAxisSize: MainAxisSize.min,
-        children: [StreamBuilder<String>(
-              stream: rushScoreStream,
-              builder: (context, snapshot) {
-                return FittedBox(
-                  fit: BoxFit.fitHeight,
-                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 18),),
-                );
-              },
-            ),
-            StreamBuilder<String>(
-              stream: rushTimerStream,
-              builder: (context, snapshot) {
-                return FittedBox(
-                  fit: BoxFit.fitHeight,
-                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: 18),),
-                );
-              },
-            ),
-            ],), 
+    final pageHeight = MediaQuery.of(context).size.height;
+    return Container(height: pageHeight - 48, child: Stack(children: [
             Center(child: SizedBox(
       width: (width * scale).floorToDouble(),
       height: (height * scale).floorToDouble(),
@@ -162,6 +143,26 @@ class PortraitBoard extends StatelessWidget {
           ),
         ),
       ),
-    ))]);
+    )),
+    Positioned(top: 0, left: 0, child: Column(mainAxisSize: MainAxisSize.min,
+        children: [StreamBuilder<String>(
+              stream: rushScoreStream,
+              builder: (context, snapshot) {
+                return FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: c.trackerFontSizePortrait),),
+                );
+              },
+            ),
+            StreamBuilder<String>(
+              stream: rushTimerStream,
+              builder: (context, snapshot) {
+                return FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(snapshot.data ?? "", style: TextStyle(fontFamily: "Outfit", fontSize: c.trackerFontSizePortrait),),
+                );
+              },
+            ),
+            ],))]));
   }
 }
