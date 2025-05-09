@@ -339,6 +339,12 @@ abstract class AppLocalizations {
   /// **'Theatre'**
   String get theatreLayoutLabel;
 
+  /// Value label of layout selection control when it is set to 'rush'.
+  ///
+  /// In en, this message translates to:
+  /// **'Rush'**
+  String get rushLayoutLabel;
+
   /// Label of a control that sets sound mode.
   ///
   /// In en, this message translates to:

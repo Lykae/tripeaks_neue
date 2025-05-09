@@ -114,7 +114,11 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             session.startEmpty = _startEmpty!;
             session.alwaysSolvable = _alwaysSolvable!;
             session.layout = _layout!;
+            if (session.layout == Peaks.rush) {
+              session.newRushGame(settings.sounds.playStart, null);
+            } else {
             session.newGame(settings.sounds.playStart);
+            }
             Navigator.pop(context);
           },
           child: Text(s.selectLayoutDialogNewGameAction),

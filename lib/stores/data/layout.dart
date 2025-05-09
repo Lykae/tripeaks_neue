@@ -39,7 +39,7 @@ final class Layout {
   final Peaks tag;
 }
 
-enum Peaks { threePeaks, diamonds, valley, theatre }
+enum Peaks { threePeaks, diamonds, valley, theatre, rush }
 
 extension PeaksExt on Peaks {
   Layout get implementation => switch (this) {
@@ -47,6 +47,7 @@ extension PeaksExt on Peaks {
     Peaks.diamonds => diamondsLayout,
     Peaks.valley => valleyLayout,
     Peaks.theatre => theatreLayout,
+    Peaks.rush => rushLayout,
   };
 
   String label(AppLocalizations s) => switch (this) {
@@ -54,8 +55,11 @@ extension PeaksExt on Peaks {
     Peaks.diamonds => s.diamondsLayoutLabel,
     Peaks.valley => s.valleyLayoutLabel,
     Peaks.theatre => s.theatreLayoutLabel,
+    Peaks.rush => s.rushLayoutLabel,
   };
 }
+
+final rushLayout = Layout(width: -1, height: -1, cardCount: -1, above: [], below: [], pins: [], tag: Peaks.rush);
 
 final threePeaksLayout = Layout(
   width: 20,

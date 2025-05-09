@@ -134,6 +134,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get theatreLayoutLabel => 'Theatre';
 
   @override
+  String get rushLayoutLabel => 'Rush';
+
+  @override
   String get soundControl => 'Sound';
 
   @override

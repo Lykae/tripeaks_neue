@@ -103,6 +103,10 @@ abstract class _Session with Store {
 
   @action
   void newGame(Future<void> Function() callback) {
+    if (layout == Peaks.rush) {
+      newRushGame(callback, null);
+      return;
+    }
     final next = _makeRandomGame(layout, startEmpty, alwaysSolvable);
     for (final tile in next.board) {
       tile.hide();
@@ -110,7 +114,11 @@ abstract class _Session with Store {
 
     if (!_game.isCleared && _game.isPlayed) {
       _game.forfeit();
-      _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      if (_game.rushInfo == null) {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      } else {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      }
       whenCleared?.reaction.dispose();
     }
 
@@ -132,15 +140,18 @@ abstract class _Session with Store {
   @action
   void newRushGame(Future<void> Function() callback, RushInfo? rushInfo) {
     rushInfo ??= RushInfo.fresh();
-    print("bread: " + rushInfo.toString());
-    final next = _makeRushGame(rushInfo);
+    final next = _makeRushGame(rushInfo, startEmpty, alwaysSolvable);
     for (final tile in next.board) {
       tile.hide();
     }
 
     if (!_game.isCleared && _game.isPlayed) {
       _game.forfeit();
-      _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      if (_game.rushInfo == null) {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      } else {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      }
       whenCleared?.reaction.dispose();
     }
 
@@ -151,9 +162,16 @@ abstract class _Session with Store {
     whenCleared = when((_) => next.isCleared, () {
       final nextInfo = next.rushInfo;
       if (nextInfo != null) {
-        if (nextInfo.rushTimer > 0) {
-          newRushGame(callback, nextInfo);
-          print("new game, current score: " + nextInfo.rushScore.toString());
+        if (next.isStalled) {
+          if (next.isPlayed) {
+            next.statisticsPushed = true;
+            _statistics = _statistics.withGame(SingleGameStatistics.of(next));
+            writeStatistics();
+          }
+        } else {
+          if (nextInfo.rushTimer > 0) {
+            newRushGame(callback, nextInfo);
+          }
         }
       }
     });
@@ -169,14 +187,22 @@ abstract class _Session with Store {
     }
 
     if (!_game.isCleared && _game.isPlayed && !_game.statisticsPushed) {
-      _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      if (_game.rushInfo == null) {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      } else {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      }
       whenCleared?.reaction.dispose();
     }
 
     whenCleared = when((_) => next.isCleared, () {
       if (next.isPlayed && !next.statisticsPushed) {
         next.statisticsPushed = true;
-        _statistics = _statistics.withGame(SingleGameStatistics.of(next));
+        if (_game.rushInfo == null) {
+          _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+        } else {
+          _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+        }
         writeStatistics();
       }
     });
@@ -208,12 +234,12 @@ abstract class _Session with Store {
     return make();
   }
 
-  static Game _makeRushGame(RushInfo rushInfo) {
+  static Game _makeRushGame(RushInfo rushInfo, bool startEmpty, bool alwaysSolvable) {
     final layoutObj = _pickRandomLayout().implementation;
 
     Game make() {
       final deck = getDeck()..shuffle();
-      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: false, alwaysSolvable: true, rushInfo: rushInfo);
+      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: startEmpty, alwaysSolvable: alwaysSolvable, rushInfo: rushInfo);
     }
 
     for (var i = 0; i < 10; i++) {
@@ -228,7 +254,8 @@ abstract class _Session with Store {
 
   static Peaks _pickRandomLayout() {
     final rng = Random();
-    return Peaks.values[rng.nextInt(Peaks.values.length)];
+    // the -1 here is because of the fake Peaks layout called rush
+    return Peaks.values[rng.nextInt(Peaks.values.length - 1)];
   }
 
   void _setupBoard(Game next, Future<void> Function() callback) async {

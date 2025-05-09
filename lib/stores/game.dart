@@ -368,11 +368,10 @@ abstract class _Game with Store {
   final RushInfo? rushInfo;
 
   Future<void> rushGameFinished() async {
-    _isEnded = true;
-    _isCleared = false;
-    _isStalled = true;
     rushInfo?.rushScore = _score;
-    print("rush game over");
+    _isEnded = true;
+    _isStalled = true;
+    _isCleared = true;
   }
 
   void startRushTimer() {
@@ -387,6 +386,7 @@ abstract class _Game with Store {
 
   @action
   bool take(Pin pin) {
+    if (_isEnded) return false;
     final tile = board[pin.index];
     final canTake = tile.isVisible && (discard.isEmpty || discard.last.card.checkAdjacent(tile.card));
 

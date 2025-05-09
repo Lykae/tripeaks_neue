@@ -24,6 +24,7 @@ void main() {
 
     for (int i = 0; i < 3; i++) {
       for (final layout in Peaks.values) {
+        if (layout == Peaks.rush) continue;
         run(layout.implementation);
       }
     }

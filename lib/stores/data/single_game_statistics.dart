@@ -20,7 +20,7 @@ final class SingleGameStatistics {
   final DateTime started;
 
   SingleGameStatistics.of(Game game)
-    : layout = game.layout.tag,
+    : layout = game.rushInfo == null ? game.layout.tag : Peaks.rush,
       score = game.score,
       longestChain = game.history.fold(0, (chain, e) => e.chain > chain ? e.chain : chain),
       isCleared = game.isCleared,

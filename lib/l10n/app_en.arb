@@ -262,6 +262,12 @@
         "context": "settings",
         "description": "Value label of layout selection control when it is set to 'theatre'."
     },
+    "rushLayoutLabel": "Rush",
+    "@rushLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'rush'."
+    },
     "@_SETTINGS_PAGE__SOUND_SETTING": {},
     "soundControl": "Sound",
     "@soundControl": {
